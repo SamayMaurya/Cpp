@@ -1,0 +1,58 @@
+#include<iostream>
+using namespace std;
+template <class T> T sum(T x,T y)
+{
+   return x+y;
+}
+int main()
+{
+cout<<sum(5,6)<<endl;
+cout<<sum(5.2f,6.0f)<<endl;
+
+}
+Output:
+11
+11.2
+-------------------------------
+
+// When different type arguments are there
+#include<iostream>
+using namespace std;
+template <class T1,class T2> T1 sum(T1 x,T2 y)
+{
+   return x+y;
+}
+int main()
+{
+cout<<sum(5,6)<<endl;
+cout<<sum(5.2f,6.0f)<<endl;
+cout<<sum(5,6.5d)<<endl;
+}
+Output:
+11
+11.2
+11
+--------------------------------------------
+//Overloading a Function Template
+#include <iostream>
+using namespace std;
+template<class X> void fun(X a)
+{
+    cout << "Value of a is : " <<a<< std::endl;
+}
+template<class X,class Y> void fun(X b ,Y c)
+{
+    cout << "Value of b is : " <<b<< endl;
+    cout << "Value of c is : " <<c<< endl;
+}
+int main()
+{
+   fun(10);
+   fun(20,30.5);
+   return 0;
+}
+Output:
+Value of a is : 10
+Value of b is : 20
+Value of c is : 30.5
+--------------------------

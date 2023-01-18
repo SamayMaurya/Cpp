@@ -1,0 +1,111 @@
+// try catch()
+
+#include<iostream>
+using namespace std;
+int main()
+{
+try {
+  int age = 15;
+  if (age >= 18) {
+    cout << "Access granted - you are old enough.";
+  } else {
+    throw 505;
+  }
+}
+catch (int ) {
+  cout << "Access denied - You must be at least 18 years old.\n";
+  //cout << "Error number: " << myNum;
+}
+}
+
+
+-----------------------------------------
+#include<iostream>
+using namespace std;
+int main()
+{
+ int x=10,y=0,z=0;
+ try{
+ if(y==0)
+ {
+ throw 1;
+ }
+ else
+    {
+    z=x/y;
+    }
+
+ }catch(int e)
+ {
+ cout<<e<<endl;
+ }
+ cout<<z<<endl;
+ cout<<"Hello";
+}
+Output:
+1
+0
+Hello
+-----------------------------
+//Handle Any Type of Exceptions (...)
+
+#include<iostream>
+using namespace std;
+int main()
+{
+try {
+  int age = 15;
+  if (age >= 18) {
+    cout << "Access granted - you are old enough.";
+  } else {
+    throw 505;
+  }
+}
+catch (...) {
+  cout << "Access denied - You must be at least 18 years old.\n";
+}
+}
+------------------
+#include <iostream>
+#include <exception>
+using namespace std;
+class MyException : public exception{
+    public:
+        const char * what() const throw()
+        {
+            return "Attempted to divide by zero!\n";
+        }
+};
+int main()
+{
+    try
+    {
+        int x, y;
+        cout << "Enter the two numbers : \n";
+        cin >> x >> y;
+        if (y == 0)
+        {
+            MyException z;
+            throw z;
+        }
+        else
+        {
+            cout << "x / y = " << x/y << endl;
+        }
+    }
+    catch(MyException  e)
+    {
+        cout << e.what();
+    }
+}
+
+//
+In order to create a user defined exception we first included the <exception> header using the 
+pre-processor directive. 
+This header has the base class exception which we have to inherit and override to create any 
+user defined exceptions.
+In the next step we created a class named MyException and inherited all properties from the exception class. 
+Then we created function what() which basically returns an error message string (in this case – C++ Exception). 
+So whenever an exception of type MyException occurs, this message will be displayed. 
+The return type of this function what() is char* because we are returning a character string.
+what() is a public method provided by the exception class. It is used to return the cause of an exception.
